@@ -10,11 +10,11 @@
 
     <title>Blog Home - Start Bootstrap Template</title>
 
-    <!-- Bootstrap core CSS -->
-    <link href="{{asset('css/app.css')}}" rel="stylesheet">
+    <!-- Scripts -->
+    @vite(['resources/sass/app.scss', 'resources/js/app.js'])
 
     <!-- Custom styles for this template -->
-    <link href="css/blog-home.css" rel="stylesheet">
+    <link href="{{asset('css/blog-home.css')}}" rel="stylesheet">
 
 </head>
 
@@ -59,8 +59,8 @@
 </footer>
 
 <!-- Bootstrap core JavaScript -->
-<script src="vendor/jquery/jquery.min.js"></script>
-<script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+<script src="{{asset('vendor/jquery/jquery.min.js')}}"></script>
+<script src="{{asset("vendor/bootstrap/js/bootstrap.bundle.min.js")}}"></script>
 
 </body>
 
