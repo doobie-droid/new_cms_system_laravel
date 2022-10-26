@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 
 Auth::routes();
 Route::get('/admin', 'App\Http\Controllers\AdminController@index')->name('admin.index');
+
+Route::get('/post','App\Http\Controllers\PostController@show')->name('post');
 Route::get('/', function(){
     return view('home');
 })->name('home');
