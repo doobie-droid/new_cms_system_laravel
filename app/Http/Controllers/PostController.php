@@ -8,6 +8,10 @@ use Illuminate\Http\Request;
 class PostController extends Controller
 {
     //
+    public function index(){
+        $posts = Post::all();
+        return view('posts.index',compact('posts'));
+    }
     public function show (Post $post){
 
       //the post_id up there must have the same name as the variable that was used to hold the post id in the
@@ -21,15 +25,17 @@ class PostController extends Controller
     }
     public function store(Request $request)
     {
-//        Request()->validate([
-//            'title'=>'bail|required|unique:posts|min:8',
-//            'post_image'=> 'mimes:jpg,bmp,png',
-//            'body'=>'bail|required|min:30'
-//        ]);
+        $inputs = Request()->validate([
+            'title'=>'bail|required|unique:posts|min:8',
+            'post_image'=> 'mimes:jpg,bmp,png',
+            'body'=>'bail|required|min:30'
+        ]);
         if(Request('post_image')){
             $inputs['post_image'] = Request('post_image')->store('images');
-            return $inputs ;
+
         }
-        return "yeah";
+        auth()->user()->posts()->create($inputs);
+
+        return back();
     }
 }
