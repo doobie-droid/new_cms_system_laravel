@@ -19,4 +19,17 @@ class PostController extends Controller
 
         return view('posts.create');
     }
+    public function store(Request $request)
+    {
+//        Request()->validate([
+//            'title'=>'bail|required|unique:posts|min:8',
+//            'post_image'=> 'mimes:jpg,bmp,png',
+//            'body'=>'bail|required|min:30'
+//        ]);
+        if(Request('post_image')){
+            $inputs['post_image'] = Request('post_image')->store('images');
+            return $inputs ;
+        }
+        return "yeah";
+    }
 }

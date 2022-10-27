@@ -24,7 +24,7 @@ Route::group(['middleware' => 'auth'], function (){
 
     Route::get('/admin/posts/create','App\Http\Controllers\PostController@create')->name('post.create');
 
-    Route::post('/admin/posts/create','')->name("post.make");
+    Route::post('/admin/posts/create','App\Http\Controllers\PostController@store')->name("post.store");
 
     Route::get('/post/{post}','App\Http\Controllers\PostController@show')->name('post');
 });
