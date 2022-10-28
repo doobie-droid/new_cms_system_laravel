@@ -11,11 +11,8 @@ class PostController extends Controller
     //
     public function index()
     {
-<<<<<<< HEAD
-        $posts = auth()->user()->posts()->paginate(5);
-=======
+
         $posts = auth()->user()->posts()->paginate(4);
->>>>>>> master
 
         return view('posts.index', compact('posts'));
     }
