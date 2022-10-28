@@ -69,13 +69,19 @@
                 </div>
             </div>
         </div>
+    <div class="d-flex">
+        <div class="mx-auto">
+            {{$posts->links()}}
+        </div>
+    </div>
+
     @endsection
     @section('scripts')
         <!-- Page level plugins -->
         <script src="{{asset('vendor/datatables/jquery.dataTables.js')}}"></script>
         <script src="{{asset('vendor/datatables/dataTables.bootstrap4.js')}}"></script>
 
-        <!-- Page level custom scripts -->
-        <script src="{{asset('js/datatables/datatables-demo.js')}}"></script>
+{{--        <!-- Page level custom scripts -->--}}
+{{--        <script src="{{asset('js/datatables/datatables-demo.js')}}"></script>--}}
     @endsection
 </x-admin-master>
