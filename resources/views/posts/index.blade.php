@@ -52,11 +52,13 @@
                                     <td>{{\Illuminate\Support\Str::limit($post->body,'30','...')}}</td>
                                     <td>{{\Carbon\Carbon::parse($post->created_at)->diffForHumans()}}</td>
                                     <td>
+                                        @can('view',$post)
                                         <form method="POST" action="{{route('post.destroy',$post->id)}}">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn-sm btn-danger"><i class="fas fa-trash"></i>Delete</button>
                                         </form>
+                                        @endcan
                                     </td>
                                 </tr>
                             @endforeach
