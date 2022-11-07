@@ -21,6 +21,8 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'username',
+        'avatar'
     ];
 
     /**
@@ -70,6 +72,12 @@ class User extends Authenticatable
         }
         return false;
 
+
+    }
+
+    public function getAvatarAttribute($value){
+
+            return asset('storage/'.$value);
 
     }
 }
