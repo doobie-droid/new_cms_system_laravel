@@ -36,10 +36,22 @@ class UserPolicy
                 return true;
             }
         }
-        return $user->id === $model->id;
+        return $user->id == $model->id;
     }
 
     public function viewadmin(User $user)
+    {
+        //
+        foreach ($user->roles as $role){
+            if($role->slug == 'admin'){
+                return true;
+            }
+        }
+
+
+    }
+
+    public function createadmin(User $user)
     {
         //
         foreach ($user->roles as $role){

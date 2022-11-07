@@ -73,6 +73,79 @@
 
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
+    <br>
+        <div class="card shadow mb-4">
+            <div class="card-header py-3">
+                <h6 class="m-0 font-weight-bold text-primary">DataTables Example</h6>
+            </div>
+            <div class="card-body">
+                <div class="table-responsive">
+                    <table class="table table-bordered" id="dataTables" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Role_Id</th>
+                            <th>Active Role</th>
+                            <th>Role Name</th>
+
+                            <th>Attach</th>
+                            <th>Detach</th>
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Role_Id</th>
+                            <th>Active Role</th>
+                            <th>Role Name</th>
+                            <th>Attach</th>
+                            <th>Detach</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        @foreach($roles as $role)
+                            <tr>
+                            <td>{{$role->id}}</td>
+                            <td><input type="checkbox"
+                                       @foreach($user->roles as $user_role)
+                                           @if($user_role->slug == $role->slug)
+                                               checked
+                                       @endif
+                                    @endforeach
+                                ></td>
+                            <td>{{$role->name}}</td>
+
+                            <td><form method="post" action="{{route('role.attach',auth()->user()->id)}}">
+                                    @csrf
+                                    @method('PATCH')
+                                    <input hidden name="user_id" value="{{$user->id}}">
+                                    <input hidden name="role_id" value="{{$role->id}}">
+                                    <button type="submit"  @foreach($user->roles as $user_role)
+                                        @if($user_role->slug == $role->slug)
+                                            disabled
+                                            @endif
+                                            @endforeach class="btn btn-success">Attach</button>
+                                </form></td>
+                            <td><form method="post" action="{{route('role.detach',auth()->user()->id)}}">
+                                    @csrf
+                                    @method('DELETE')
+                                    <input hidden name="user_id" value="{{$user->id}}">
+                                    <input hidden name="role_id" value="{{$role->id}}">
+                                    <button  @foreach($user->roles as $user_role)
+                                                 @if($user_role->slug !== $role->slug)
+                                                     disabled
+                                             @endif
+                                             @endforeach type="submit" class="btn btn-danger">Detach</button>
+                                </form></td>
+                            </tr>
+                        @endforeach
+
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
 
     @endsection
+
+
 </x-admin-master>

@@ -20,6 +20,11 @@ Auth::routes();
 Route::get('/',  'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function (){
+    Route::patch('admin/{user}/role/attach','App\Http\Controllers\RoleController@attach')->name('role.attach');
+
+    Route::delete('admin/{user}/role/detach','App\Http\Controllers\RoleController@detach')->name('role.detach');
+
+    Route::get('admin/users','App\Http\Controllers\UserController@index')->name('users.index');
 
 
     Route::get('/admin', 'App\Http\Controllers\AdminController@index')->name('admin.index');
@@ -40,9 +45,9 @@ Route::group(['middleware' => 'auth'], function (){
 });
 
 Route::middleware(['can:view,user'])->group(function(){
-    Route::get('admin/users/{user}/profile', 'App\Http\Controllers\UserController@show')->name('user.profile.show');
 
-    Route::get('admin/users','App\Http\Controllers\UserController@index')->name('users.index');
+
+    Route::get('admin/users/{user}/profile', 'App\Http\Controllers\UserController@show')->name('user.profile.show');
 
     Route::delete('admin/user/{user}/destroy','App\Http\Controllers\UserController@destroy')->name('user.destroy');
 

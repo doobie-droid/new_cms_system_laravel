@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -11,15 +12,15 @@ class UserController extends Controller
 {
     //
 
-    public function index(){
-
+    public function index(User $user){
+        $this->authorize('view',$user);
         $users = User::all();
         return view('admin.users.index',compact('users'));
     }
     public function show(User $user)
     {
-//        $this->authorize('view',$user)
-        return view('admin.users.profile',compact('user'));
+        $roles = Role::all();
+        return view('admin.users.profile',compact(['user','roles']));
     }
 
     public function update(User $user){
