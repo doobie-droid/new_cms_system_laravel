@@ -20,13 +20,7 @@ Auth::routes();
 Route::get('/',  'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function (){
-    Route::get('admin/users/{user}/profile', 'App\Http\Controllers\UserController@show')->name('user.profile.show');
 
-    Route::get('admin/users','App\Http\Controllers\UserController@index')->name('users.index');
-
-    Route::delete('admin/user/{user}/destroy','App\Http\Controllers\UserController@destroy')->name('user.destroy');
-
-    Route::put('admin/users/{user}/update','App\Http\Controllers\UserController@update')->name('user.profile.update');
 
     Route::get('/admin', 'App\Http\Controllers\AdminController@index')->name('admin.index');
 
@@ -45,6 +39,14 @@ Route::group(['middleware' => 'auth'], function (){
     Route::get('/post/{post}','App\Http\Controllers\PostController@show')->name('post');
 });
 
+Route::middleware(['can:view,user'])->group(function(){
+    Route::get('admin/users/{user}/profile', 'App\Http\Controllers\UserController@show')->name('user.profile.show');
 
+    Route::get('admin/users','App\Http\Controllers\UserController@index')->name('users.index');
+
+    Route::delete('admin/user/{user}/destroy','App\Http\Controllers\UserController@destroy')->name('user.destroy');
+
+    Route::put('admin/users/{user}/update','App\Http\Controllers\UserController@update')->name('user.profile.update');
+});
 
 //Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

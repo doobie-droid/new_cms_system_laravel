@@ -12,15 +12,18 @@ class UserController extends Controller
     //
 
     public function index(){
+
         $users = User::all();
         return view('admin.users.index',compact('users'));
     }
     public function show(User $user)
     {
+//        $this->authorize('view',$user)
         return view('admin.users.profile',compact('user'));
     }
 
     public function update(User $user){
+//        $this->authorize('view',$user);
         $inputs = request()->validate([
             'username'=>['required','string','max:255','alpha_dash','unique:users'],
             'name'=>['required','string','max:255'],

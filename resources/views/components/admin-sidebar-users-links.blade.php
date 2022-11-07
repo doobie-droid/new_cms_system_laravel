@@ -1,4 +1,5 @@
 <!-- Nav Item - Utilities Collapse Menu -->
+@can('viewadmin',\App\Models\User::class)
 <li class="nav-item">
     <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUsers" aria-expanded="true" aria-controls="collapseUsers">
         <i class="fas fa-fw fa-wrench"></i>
@@ -12,3 +13,4 @@
         </div>
     </div>
 </li>
+@endcan

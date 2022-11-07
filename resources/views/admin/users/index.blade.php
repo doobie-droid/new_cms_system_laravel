@@ -7,7 +7,7 @@
             <br>
         @endif
 
-        <!-- DataTales Example -->
+        <!-- DataTables Example -->
         @if($users)
         <div class="card shadow mb-4">
             <div class="card-header py-3">
@@ -43,7 +43,7 @@
 @foreach($users as $user)
                                 <tr>
                                     <td>{{$user->id}}</td>
-                                    <td>{{$user->username}}</td>
+                                    <td><a href="{{route('user.profile.show',$user->id)}}">{{$user->username}}</a></td>
                                     <td><img height="60px" src="{{$user->avatar}}"></td>
                                     <td>{{$user->name}}</td>
                                     <td>{{\Carbon\Carbon::parse($user->created_at)->diffForHumans()}}</td>

@@ -1,10 +1,10 @@
 <x-admin-master>
     @section('content')
         <h1>User Profile</h1>
-        <form method="POST" action="{{route('user.profile.update',auth()->user()->id)}}" enctype="multipart/form-data">
+        <form method="POST" action="{{route('user.profile.update',$user->id)}}" enctype="multipart/form-data">
             @csrf
             @method('PUT')
-            <img   height="60px"  src="{{auth()->user()->avatar}}">
+            <img   height="60px"  src="{{$user->avatar}}">
             <br>
             <br>
             <div class="form-row">
@@ -21,7 +21,7 @@
                     <label>FullName</label>
                     <input name="name" type="text" class="form-control @error('name') is-invalid @enderror
 " id="name"
-                           placeholder="Enter your full name here...." value="{{auth()->user()->name}}">
+                           placeholder="Enter your full name here...." value="{{$user->name}}">
                     @error('name')
                     <div class="invalid-feedback" role="alert">{{ $message }}</div>
                     @enderror
@@ -32,7 +32,7 @@
                 <div class="form-group col-md-6">
                     <label>UserName</label>
                     <input name="username" type="text" class="form-control @error('username') is-invalid @enderror" id="username"
-                           value="{{auth()->user()->username}}">
+                           value="{{$user->username}}">
                     @error('username')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
@@ -44,7 +44,7 @@
                 <div class="form-group col-md-6">
                     <label>Email Address</label>
                     <input name="email" type="text" class="form-control @error('email') is-invalid @enderror" id="email"
-                           value="{{auth()->user()->email}}">
+                           value="{{$user->email}}">
                     @error('email')
                     <div class="invalid-feedback">{{ $message }}</div>
                     @enderror
