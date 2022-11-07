@@ -20,6 +20,8 @@ Auth::routes();
 Route::get('/',  'App\Http\Controllers\HomeController@index')->name('home');
 
 Route::group(['middleware' => 'auth'], function (){
+    Route::get('admin/users/{user}/profile', 'App\Http\Controllers\UserController@index')->name('user.profile.show');
+
     Route::get('/admin', 'App\Http\Controllers\AdminController@index')->name('admin.index');
 
     Route::get('/admin/posts', 'App\Http\Controllers\PostController@index')->name('post.index');
