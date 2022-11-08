@@ -13,8 +13,17 @@ class RoleController extends Controller
     //
     public function index(){
         $roles = Role::all();
-        return view('admin.roles.index',compact('roles'));
+        //the code below says that there is no role to edit at this point
+        $role = false;
+        return view('admin.roles.index',compact(['roles','role']));
     }
+
+    public function edit(Role $role){
+        $roles = Role::all();
+        //the code below is the same  with index but now, there is a role to edit
+        return view('admin.roles.index',compact(['roles','role']));
+    }
+
 
     public function store(Request $request){
         $inputs = Request()->validate([
@@ -26,6 +35,17 @@ class RoleController extends Controller
         return back();
     }
 
+    public function update(Role $role){
+        $inputs = Request()->validate([
+            'name'=>['required','string','unique:roles'],
+        ]);
+        $role->name= Str::ucfirst($inputs['name'] );
+        $role->slug = Str::of(Str::lower($inputs['name']))->slug('-');
+        $role->update();
+        Session::flash('update', 'The role ' . $role->name . ' has been updated.');
+
+        return back();
+    }
     public function attach(User $loggedinuser){
         $this->authorize('view',$loggedinuser);
         $usertoEdit = User::find(request()->user_id);
