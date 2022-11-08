@@ -45,6 +45,10 @@
 
    </x-sidebar.admin-sidebar-users-links>
 
+    <x-sidebar.authorization-links>
+
+    </x-sidebar.authorization-links>
+
     <!-- Divider -->
     <hr class="sidebar-divider">
 
