@@ -80,7 +80,48 @@
                 </div>
             @endif
         </div>
+    @if($permissions)
+        <div class="row">
+            <div class="card-body col-sm-12">
+                <div class="table-responsive">
 
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                        <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Options</th>
+                            <th>Permissions</th>
+                            <th>Attach</th>
+                            <th>Detach</th>
+
+                        </tr>
+                        </thead>
+                        <tfoot>
+                        <tr>
+                            <th>Id</th>
+                            <th>Options</th>
+                            <th>Permissions</th>
+                            <th>Attach</th>
+                            <th>Detach</th>
+                        </tr>
+                        </tfoot>
+                        <tbody>
+                        @foreach($permissions as $permission)
+                            <tr>
+                                <td>{{$permission->id}}</td>
+                                <td><input type="checkbox"></td>
+                                <td>{{$permission->name}}</td>
+                                <td></td>
+                                <td></td>
+                            </tr>
+                        @endforeach
+                        </tbody>
+                    </table>
+
+                </div>
+            </div>
+        </div>
+        @endif
     @endsection
 
 </x-admin-master>

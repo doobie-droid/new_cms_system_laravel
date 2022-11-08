@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Permission;
 use App\Models\Role;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -15,13 +16,15 @@ class RoleController extends Controller
         $roles = Role::all();
         //the code below says that there is no role to edit at this point
         $role = false;
-        return view('admin.roles.index',compact(['roles','role']));
+        $permissions = false;
+        return view('admin.roles.index',compact(['roles','role','permissions']));
     }
 
     public function edit(Role $role){
         $roles = Role::all();
+        $permissions = Permission::all();
         //the code below is the same  with index but now, there is a role to edit
-        return view('admin.roles.index',compact(['roles','role']));
+        return view('admin.roles.index',compact(['roles','role','permissions']));
     }
 
 
