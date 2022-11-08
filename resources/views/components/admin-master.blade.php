@@ -28,9 +28,9 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
 
-   <x-admin-sidebar-posts-links>
+   <x-sidebar.admin-sidebar-posts-links>
 
-   </x-admin-sidebar-posts-links>
+   </x-sidebar.admin-sidebar-posts-links>
 
     <!-- Content Wrapper -->
     <div id="content-wrapper" class="d-flex flex-column">
@@ -38,9 +38,11 @@
         <!-- Main Content -->
         <div id="content">
 
-            <x-admin-top-navbar-user-information>
+            <x-sidebar.admin-top-navbar-user-information>
 
-            </x-admin-top-navbar-user-information>
+            </x-sidebar.admin-top-navbar-user-information>
+
+
 
             <!-- Begin Page Content -->
             <div class="container-fluid">

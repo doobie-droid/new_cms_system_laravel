@@ -33,14 +33,20 @@
         </div>
         <div class="collapse navbar-collapse " id="navbarResponsive">
             <ul class="navbar-nav ml-auto">
-                <li class="nav-item active">
-                    @if(Auth::check())
 
+                    @if(Auth::check())
+                    <li class="nav-item active">
                     <a class="nav-link" href="{{route('admin.index')}}">Admin</a>
+                    </li>
                     @else
+                    <li class="nav-item active">
                         <a class="nav-link" href="{{route('login')}}">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{route('register')}}">Register</a>
+                    </li>
                     @endif
-                </li>
+
                 <li class="nav-item">
                     <a class="nav-link" href="#">About</a>
                 </li>
