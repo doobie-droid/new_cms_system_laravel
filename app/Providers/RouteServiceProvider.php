@@ -40,11 +40,12 @@ class RouteServiceProvider extends ServiceProvider
                 ->prefix('prefix')
                 ->group(base_path('routes/testing/testing.php'));
 
-            Route::middleware('web')
+            Route::middleware(['web','auth','role:admin'])
+                //you can add a middleware to allow only admin access here
                 ->prefix('permissions')
                 ->group(base_path('routes/permissions/routes.php'));
 
-            Route::middleware('web')
+            Route::middleware(['web','auth','role:admin'])
                 ->prefix('roles')
                 ->group(base_path('routes/roles/routes.php'));
 
