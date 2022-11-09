@@ -109,10 +109,22 @@
                         @foreach($permissions as $permission)
                             <tr>
                                 <td>{{$permission->id}}</td>
-                                <td><input type="checkbox"></td>
+                                <td><input type="checkbox" @if($role->permissions->contains($permission)) checked @endif></td>
                                 <td>{{$permission->name}}</td>
-                                <td></td>
-                                <td></td>
+                                <td><form method="POST" action="{{route('permission.attach',$role->id)}}">
+                                        @csrf
+                                        @method('PATCH')
+                                        <input type="hidden" name="permission_id" value="{{$permission->id}}">
+                                        <button type="submit" class="btn btn-success" @if($role->permissions->contains($permission)) disabled @endif>Attach</button>
+                                    </form>
+                                </td>
+                                <td><form method="POST" action="{{route('permission.detach',$role->id)}}">
+                                        @csrf
+                                        @method('DELETE')
+                                        <input type="hidden" name="permission_id" value="{{$permission->id}}">
+                                        <button type="submit" class="btn btn-danger" @if(!$role->permissions->contains($permission)) disabled @endif>Detach</button>
+                                    </form>
+                                </td>
                             </tr>
                         @endforeach
                         </tbody>

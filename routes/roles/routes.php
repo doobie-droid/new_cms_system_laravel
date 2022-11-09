@@ -11,3 +11,5 @@ Route::put('/admin/{role}','App\Http\Controllers\RoleController@update')->name('
 Route::post('/admin/create','App\Http\Controllers\RoleController@store')->name('role.store');
 
 Route::delete('/admin/{role}','App\Http\Controllers\RoleController@destroy')->name('role.destroy');
+
+

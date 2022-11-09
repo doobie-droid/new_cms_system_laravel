@@ -11,3 +11,7 @@ Route::put('/admin/{permission}','App\Http\Controllers\PermissionController@upda
 Route::post('/admin/create','App\Http\Controllers\PermissionController@store')->name('permission.store');
 
 Route::delete('/admin/{permission}','App\Http\Controllers\PermissionController@destroy')->name('permission.destroy');
+
+Route::patch('/admin/{role}/attach','App\Http\Controllers\PermissionController@attach')->name('permission.attach');
+
+Route::delete('/admin/{role}/detach','App\Http\Controllers\PermissionController@detach')->name('permission.detach');

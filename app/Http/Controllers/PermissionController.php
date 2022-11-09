@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Models\Permission;
+use App\Models\Role;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 use Illuminate\Support\Str;
@@ -45,6 +47,19 @@ class PermissionController extends Controller
 
         return back();
     }
+
+    public function attach(Role $role){
+        $role->permissions()->attach(Permission::find(\request()->permission_id));
+        return back();
+    }
+
+    public function detach(Role $role){
+        $role->permissions()->detach(Permission::find(\request()->permission_id));
+        return back();
+    }
+
+
+
     public function destroy(Permission $permission){
         $permission->delete();
         Session::flash('message', 'The permission ' . $permission->name . ' was deleted.');
