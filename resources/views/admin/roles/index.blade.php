@@ -38,14 +38,8 @@
                         @if(\Illuminate\Support\Facades\Session::has('message'))
 
                             <div class="alert alert-danger">{{\Illuminate\Support\Facades\Session::get('message')}}</div>
-<<<<<<< HEAD
-                            toastr["success"]("My name is Inigo Montoya. You killed my father. Prepare to die!")
-}}
-
-=======
                         @elseif(\Illuminate\Support\Facades\Session::has('update'))
                             <div class="alert alert-success">{{\Illuminate\Support\Facades\Session::get('update')}}</div>
->>>>>>> master
                         @endif
                         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                             <thead>

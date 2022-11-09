@@ -20,7 +20,7 @@
 
     <!-- Custom styles for this template-->
     <link href="{{asset('css/sb-admin-2.css')}}" rel="stylesheet">
-    <link href="{{asset('css/toastr.min.css')}}" rel="stylesheet">
+
 
 </head>
 
@@ -88,7 +88,6 @@
 
 <!-- Custom scripts for all pages-->
 <script src="{{asset('js/sb-admin-2.js')}}"></script>
-<script src="{{asset('js/toastr.min.js')}}"></script>
 @yield('scripts')
 
 </body>
